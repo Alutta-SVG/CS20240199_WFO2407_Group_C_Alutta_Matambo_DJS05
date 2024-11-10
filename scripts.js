@@ -22,5 +22,12 @@ function createStore(reducer) {
 
     dispatch({});
     return { getState, dispatch, subscribe };
+    
+}
 
+function counterReducer(state ={ count: 0}, action) {
+    switch (action.type) {
+        case 'INCREMENT':
+            return { count: state.count + 1 };
+    }
 }
