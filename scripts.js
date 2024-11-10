@@ -37,3 +37,12 @@ function counterReducer(state ={ count: 0}, action) {
                         return state;
     }
 }
+ 
+const store = createStore(counterReducer);
+
+store.subscribe(() => console.log("state:", store,getState()));
+
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({type:"INCREMENT"});
+store.dispatch({type:"DECREMENT"});
+store.dispatch({type:"RESET"});
