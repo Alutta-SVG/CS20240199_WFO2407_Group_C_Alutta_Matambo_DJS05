@@ -19,6 +19,15 @@ function createStore(reducer) {
         };
     }
 
+    const outputElement = document.getElementById('output');
+    function render() {
+        const state = store.getState();
+        outputElement.textContent = `Count: ${state.count}`;
+    }
+    store.subscribe(render);
+
+    render();
+    
     // Initialize the state
     dispatch({});
     return { getState, dispatch, subscribe };
