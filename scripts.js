@@ -2,8 +2,7 @@ function createStore(reducer) {
     let state;
     const listeners =[];
 
-
-    fuction getState() {
+    function getState() {
         return state;
     };
 
@@ -20,29 +19,28 @@ function createStore(reducer) {
         };
     }
 
+    // Initialize the state
     dispatch({});
     return { getState, dispatch, subscribe };
-    
 }
 
-function counterReducer(state ={ count: 0}, action) {
+function counterReducer(state = { count: 0 }, action) {
     switch (action.type) {
         case 'INCREMENT':
             return { count: state.count + 1 };
-            case 'DECREMENT':
-                return { count: state.count - 1 };
-                case 'RESET':
-                    return { count: 0 };
-                    default:
-                        return state;
+        case 'DECREMENT':
+            return { count: state.count - 1 };
+        case 'RESET':
+            return { count: 0 };
+        default:
+            return state;
     }
 }
- 
-const store = createStore(counterReducer);
 
-store.subscribe(() => console.log("state:", store,getState()));
+const store = createStore(counterReducer);
+store.subscribe(() => console.log("state:", store.getState()));
 
 store.dispatch({ type: 'INCREMENT' });
-store.dispatch({type:"INCREMENT"});
-store.dispatch({type:"DECREMENT"});
-store.dispatch({type:"RESET"});
+store.dispatch({ type: 'INCREMENT' });
+store.dispatch({ type: 'DECREMENT' });
+store.dispatch({ type: 'RESET' });
